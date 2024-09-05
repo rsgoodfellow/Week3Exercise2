@@ -8,13 +8,10 @@ namespace Week3Exercise2
 {
     internal class Program
     {
-        public static int[] RollDice() //method to generate the dice rolls
+        private static Random rnd = new Random(); // Creates a random variable
+        public static int RollDice() //method to generate the dice rolls
         {
-            Random rnd = new Random(); //creates an random variable
-            int[] dice = new int[2]; //creates an integer array with 2 array values
-            dice[0] = rnd.Next(1,7); //simulates a dice roll for the first dice
-            dice[1] = rnd.Next(1,7); //simulates a dice roll for the second dice
-            return dice; //returns both dice values for RollDice()
+            return rnd.Next(1,7); //returns dice values for RollDice()
         }
 
         static void Main(string[] args) //main method
@@ -23,8 +20,9 @@ namespace Week3Exercise2
 
             while (roll) //a while loop that will repeat as long as the boolean roll value equals true
             {
-                int[] diceRolls = RollDice(); //creates an integer array that is equivilent to the RollDice method
-                Console.WriteLine("You rolled a " + diceRolls[0] + " and a " + diceRolls[1] + "."); //displays dice rolls
+                int dice1 = RollDice();
+                int dice2 = RollDice();
+                Console.WriteLine("You rolled a " + dice1 + " and a " + dice2 + "."); //displays dice rolls
                 Console.WriteLine("Would you like to roll again? (y/n)"); //prompts the user for input
                 char input = Convert.ToChar(Console.ReadLine()); //applies user input to a new char variable
                 if (input == 'y') //if condition for loop
